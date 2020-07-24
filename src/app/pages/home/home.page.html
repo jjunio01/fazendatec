@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>FazendaTec</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="../assets/logo.png" />
+    <ion-card-header>
+      
+      <ion-item>
+        <ion-label>Status da bomba:</ion-label>
+      
+       <ion-text class="ion-text-uppercase" color="success" *ngIf="status == 'ligada'">{{status}}</ion-text>
+       <ion-text class="ion-text-uppercase" color="danger" *ngIf="status == 'desligada'" >{{status}}</ion-text>
+
+      </ion-item>
+      <ion-item>
+        <ion-label>Programação:</ion-label>      
+          <ion-text class="ion-text-uppercase" color="success">{{programacao}}</ion-text>
+        </ion-item>
+      <div *ngIf="status == 'ligada'">
+      <ion-list-header>
+        <ion-label>
+          Enchendo...             
+        <ion-icon color="primary" name="water"></ion-icon>
+        <ion-icon color="primary" name="water"></ion-icon>
+        <ion-icon color="primary" name="water"></ion-icon>
+        <ion-icon color="primary" name="water"></ion-icon>
+      </ion-label>
+      </ion-list-header>
+      <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    </div>     
+    </ion-card-header>
+    <ion-card-content>
+      Ligação da caixa d'agua
+    </ion-card-content>
+  </ion-card>
+    <div class="botao" *ngIf="status == 'desligada'">
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-button color="success" (click) ="acionarBomba()" slot="start" name="bomba" >LIGAR</ion-button>
+      </ion-item>
+    </div>
+    <div class="botao" *ngIf="status == 'ligada'">
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-button color="danger" (click) ="desligarBomba()" slot="start" name="bomba" >DESLIGAR</ion-button>
+      </ion-item> 
+    </div>
+</ion-content>
