@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,9 @@ export class HomePage implements OnInit {
   status: string
   programacao: string
 
-  constructor() { 
+  resultado: any = {status:'', programacao: ''};
+
+  constructor(private requisicao: RequestsService) { 
     this.status = 'ligada'
     this.programacao = 'manual'
 
@@ -27,4 +30,11 @@ export class HomePage implements OnInit {
     this.status = 'desligada'
   }
 
+  verificarStatus() {
+    this.requisicao.consultarStatus()
+    .then((json) => {
+      this.resultado= json;
+    })
+    console.log(this.resultado);
+    };
 }
