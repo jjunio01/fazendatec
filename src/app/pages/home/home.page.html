@@ -8,28 +8,31 @@
 </ion-header>
 
 <ion-content>
-   <ion-item>
-    <ion-label>Status:</ion-label>      
-      <ion-text class="ion-text-uppercase" color="success">{{ status }}</ion-text>
+  <ion-item>
+    <ion-label>Status:</ion-label>
+    <ion-text class="ion-text-uppercase" color="success">{{ status }}</ion-text>
   </ion-item>
 
+  <ion-card>
+    <img src="../assets/logo.png" />
+  </ion-card>
   <div *ngIf="status; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
-      <ion-button>Desligar</ion-button>
+    <ion-button (click)="desligar()">Desligar</ion-button>
   </ng-template>
   <ng-template #elseBlock>
     <ion-label>
-      <ion-button>Ligar</ion-button>
+      <ion-button (click)="acionar()">Ligar</ion-button>
     </ion-label>
-    </ng-template>
+  </ng-template>
 
   <div *ngIf="!status else loading">
-   </div>
-   
-   <ng-template #loading>
+  </div>
+
+  <ng-template #loading>
     <div>
       <ion-icon color="primary" name="water"></ion-icon>
     </div>
-   </ng-template>
+  </ng-template>
 
 </ion-content>
